@@ -38,3 +38,8 @@ body {
 .step .ant-steps-item-description {
   max-width: inherit !important;
 }
+
+.text-error {
+  color: red;
+  font-weight: bold;
+}

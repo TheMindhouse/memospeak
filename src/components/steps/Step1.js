@@ -1,5 +1,8 @@
 import React from 'react';
-import { Input } from 'antd';
+import {
+  Input,
+  Button,
+} from 'antd';
 const { TextArea } = Input;
 
 const Step1 = (props) => {
@@ -7,6 +10,8 @@ const Step1 = (props) => {
     <div>
       <p>Paste the text you memorized:</p>
       <TextArea rows={10} />
+      <br/> <br/>
+      <Button type="primary" size="large" onClick={() => props.next()}>Next</Button>
     </div>
   );
 };

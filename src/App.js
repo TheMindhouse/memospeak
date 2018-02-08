@@ -28,8 +28,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 1,
+      current: 0,
     };
+
+    this.prev = this.prev.bind(this)
+    this.next = this.next.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   next() {
@@ -40,6 +44,10 @@ class App extends Component {
   prev() {
     const current = this.state.current - 1;
     this.setState({ current });
+  }
+
+  reset() {
+    this.setState({ current: 0 })
   }
 
   render() {
@@ -62,36 +70,17 @@ class App extends Component {
                 {
                   this.state.current === 0
                   &&
-                  <Step1 />
+                  <Step1 next={this.next} />
                 }
                 {
                   this.state.current === 1
                   &&
-                  <Step2 />
+                  <Step2 next={this.next} />
                 }
                 {
                   this.state.current === 2
                   &&
-                  <Step3 />
-                }
-              </div>
-              <div className="steps-action">
-                {
-                  this.state.current < steps.length - 1
-                  &&
-                  <Button type="primary" onClick={() => this.next()}>Next</Button>
-                }
-                {
-                  this.state.current === steps.length - 1
-                  &&
-                  <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
-                }
-                {
-                  this.state.current > 0
-                  &&
-                  <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-                    Previous
-                  </Button>
+                  <Step3 next={this.reset} />
                 }
               </div>
             </Col>
