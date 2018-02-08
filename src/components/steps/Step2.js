@@ -10,7 +10,7 @@ import {
 const formatTime = seconds => `${parseInt(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`
 
 class Step2 extends Component {
-  TIME_DEFAULT = 5
+  TIME_DEFAULT = 60
 
   constructor() {
     super()
