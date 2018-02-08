@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Layout, Row, Col, Steps, Button, message } from 'antd';
 
 import elephant from './elephant.svg'
+
+import Step1 from './components/steps/Step1'
+import Step2 from './components/steps/Step2'
+import Step3 from './components/steps/Step3'
+
 const { Header, Footer, Content } = Layout;
 const { Step } = Steps;
 
@@ -23,7 +28,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 0,
+      current: 1,
     };
   }
 
@@ -43,7 +48,7 @@ class App extends Component {
       <Layout>
         <Header className="header">
           <Row type="flex" align="middle">
-            <img src={elephant} className="header-logo"/>
+            <img src={elephant} alt="Memospeak" className="header-logo"/>
             <span className="header-name">Memospeak</span>
           </Row>
         </Header>
@@ -53,7 +58,23 @@ class App extends Component {
               <Steps current={current}>
                 {steps.map(item => <Step key={item.title} title={item.title} description={item.description} className="step"/>)}
               </Steps>
-              <div className="steps-content">{steps[this.state.current].content}</div>
+              <div className="steps-content">
+                {
+                  this.state.current === 0
+                  &&
+                  <Step1 />
+                }
+                {
+                  this.state.current === 1
+                  &&
+                  <Step2 />
+                }
+                {
+                  this.state.current === 2
+                  &&
+                  <Step3 />
+                }
+              </div>
               <div className="steps-action">
                 {
                   this.state.current < steps.length - 1
