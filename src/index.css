@@ -1,5 +1,41 @@
+@import '~antd/dist/antd.css';
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.header-logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header-name {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.content {
+  padding: 50px 20px;
+  min-height: calc(100vh - 133px);
+}
+
+.steps-content {
+  margin-top: 16px;
+  border: 1px dashed #e9e9e9;
+  border-radius: 6px;
+  background-color: #fafafa;
+  min-height: 200px;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.steps-action {
+  margin-top: 24px;
+}
+
+.step .ant-steps-item-description {
+  max-width: inherit !important;
 }
