@@ -11,17 +11,14 @@ const { Header, Footer, Content } = Layout;
 const { Step } = Steps;
 
 const steps = [{
-  title: 'Enter text',
-  description: 'Anything you want to memorize',
-  content: 'First-content',
+  title: 'Memorize',
+  description: 'Enter any text you want',
 }, {
   title: 'Speak',
   description: 'Record what you remembered',
-  content: 'Second-content',
 }, {
   title: 'Compare',
   description: 'See how well you performed!',
-  content: 'Last-content',
 }];
 
 class App extends Component {
