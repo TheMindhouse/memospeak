@@ -1,11 +1,10 @@
-import React from 'react';
+import React from 'react'
 import {
   Row,
   Col,
   Progress,
-  Button,
-} from 'antd';
-
+  Button
+} from 'antd'
 
 const Step3 = (props) => {
   return (
@@ -25,10 +24,10 @@ const Step3 = (props) => {
         <Col span={12}>
           <h2>Recorded</h2>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum is simply <span className='text-error'>yabba dabba</span> text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
             took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-            centuries, but also the leap into <span className="text-error">electronic typesetting</span>, remaining
+            centuries, but also the leap into electronic typesetting, remaining
             essentially unchanged.
             It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -43,13 +42,13 @@ const Step3 = (props) => {
           <Progress percent={90} />
         </Col>
       </Row>
-      <br/><br/>
-      <Button type="primary" size="large" onClick={() => props.next()}>Again</Button>
+      <br /><br />
+      <Button type='primary' size='large' onClick={() => props.next()}>Again</Button>
     </div>
-  );
-};
+  )
+}
 
-Step3.propTypes = {};
-Step3.defaultProps = {};
+Step3.propTypes = {}
+Step3.defaultProps = {}
 
-export default Step3;
+export default Step3
