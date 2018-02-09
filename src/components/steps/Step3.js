@@ -7,24 +7,7 @@ import {
   Popover
 } from 'antd'
 
-const markWordAsCorrect = (
-  <div>
-    Expected: <b>dummy</b><br />
-    You said: <b>yabba dabba doo</b><br /><br />
-    <Button type='default' size='default'>Mark as correct</Button>
-  </div>
-)
-
-const showDiff = (diff) => {
-  return diff.map((part) => {
-    if (part.added) {
-      return <span className="text-error">{part.value}</span>
-    } else if (part.removed) {
-      return <span className="text-missing">{part.value}&nbsp;</span>
-    }
-    return <span>{part.value}</span>
-  })
-}
+import Diff from '../diff/Diff'
 
 class Step3 extends Component {
   render () {
@@ -44,15 +27,7 @@ class Step3 extends Component {
           <Col span={12}>
             <h2>Recorded</h2>
             <p className='diff-content'>
-              {/*<Popover placement='top' title='Incorrect word' content={markWordAsCorrect} trigger='click'>*/}
-                {/*&nbsp;*/}
-                {/*<span className='diff-incorrect'>*/}
-                  {/*<span className='text-missing'>dummy</span>&nbsp;*/}
-                  {/*<span className='text-error'>yabba dabba doo</span>*/}
-                {/*</span>*/}
-                {/*&nbsp;*/}
-              {/*</Popover>*/}
-              {showDiff(textDiff)}
+              <Diff diff={textDiff} />
             </p>
           </Col>
         </Row>

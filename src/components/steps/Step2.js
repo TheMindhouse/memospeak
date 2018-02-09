@@ -51,7 +51,7 @@ class Step2 extends Component {
     clearInterval(this.timer)
     setTimeout(() => {
       this.props.next()
-    }, 3000)
+    }, 1000)
   }
 
   render () {
