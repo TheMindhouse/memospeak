@@ -1,6 +1,3 @@
 {
-  "extends": ["standard", "standard-react"],
-  "ecmaFeatures": {
-    "classes": true
-  }
+  "extends": ["standard", "standard-react"]
 }

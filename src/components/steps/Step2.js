@@ -6,6 +6,8 @@ import {
   Spin
 } from 'antd'
 
+const TEMP_TEXT_RECORDED = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the yabba dabba doo text ever since the 1500s, when an unknown uhmmm printer took a galley of type and I forgot it damn it ah yes to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+
 // Initial recording time in seconds
 const TIME_DEFAULT = 60
 
@@ -41,6 +43,11 @@ class Step2 extends Component {
 
   stopRecording () {
     this.setState({ recording: false, finishedRecording: true })
+
+    // Todo - pass actual recorded text
+    const textRecorded = TEMP_TEXT_RECORDED
+    this.props.save(textRecorded)
+
     clearInterval(this.timer)
     setTimeout(() => {
       this.props.next()

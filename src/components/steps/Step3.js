@@ -15,51 +15,44 @@ const markWordAsCorrect = (
   </div>
 )
 
-const TEMP_TEXT = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-const TEMP_ERRORS = 1
+const showDiff = (diff) => {
+  return diff.map((part) => {
+    if (part.added) {
+      return <span className="text-error">{part.value}</span>
+    } else if (part.removed) {
+      return <span className="text-missing">{part.value}&nbsp;</span>
+    }
+    return <span>{part.value}</span>
+  })
+}
 
 class Step3 extends Component {
-  constructor () {
-    super()
-    this.state = {
-      wordsTotal: TEMP_TEXT.trim().split(/\s+/).length,
-      wordsCorrect: TEMP_TEXT.trim().split(/\s+/).length - TEMP_ERRORS,
-      wordsIncorrect: TEMP_ERRORS
-    }
-  }
-
   render () {
+    const { textOriginal, textDiff, wordStats } = this.props
     const {
       wordsTotal,
       wordsCorrect,
       wordsIncorrect
-    } = this.state
+    } = wordStats
     return (
       <div>
         <Row gutter={30}>
           <Col span={12}>
             <h2>Original</h2>
-            <p className='diff-content'>{TEMP_TEXT}</p>
+            <p className='diff-content'>{textOriginal}</p>
           </Col>
           <Col span={12}>
             <h2>Recorded</h2>
             <p className='diff-content'>
-              Lorem Ipsum is simply
-              <Popover placement='top' title='Incorrect word' content={markWordAsCorrect} trigger='click'>
-                &nbsp;
-                <span className='diff-incorrect'>
-                  <span className='text-missing'>dummy</span>&nbsp;
-                  <span className='text-error'>yabba dabba doo</span>
-                </span>
-                &nbsp;
-              </Popover>
-              text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting, remaining
-              essentially unchanged.
-              It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              {/*<Popover placement='top' title='Incorrect word' content={markWordAsCorrect} trigger='click'>*/}
+                {/*&nbsp;*/}
+                {/*<span className='diff-incorrect'>*/}
+                  {/*<span className='text-missing'>dummy</span>&nbsp;*/}
+                  {/*<span className='text-error'>yabba dabba doo</span>*/}
+                {/*</span>*/}
+                {/*&nbsp;*/}
+              {/*</Popover>*/}
+              {showDiff(textDiff)}
             </p>
           </Col>
         </Row>
