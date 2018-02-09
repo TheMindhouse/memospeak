@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import {
   Button,
@@ -24,8 +23,5 @@ const WordMissing = ({ value }) => {
     </Popover>
   )
 }
-
-WordMissing.propTypes = {}
-WordMissing.defaultProps = {}
 
 export default WordMissing

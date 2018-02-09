@@ -4,7 +4,6 @@ import {
   Col,
   Progress,
   Button,
-  Popover
 } from 'antd'
 
 import Diff from '../diff/Diff'
@@ -64,7 +63,7 @@ class Step3 extends Component {
             </Row>
             <br /><br />
             <h3>Memorization level:</h3>
-            <Progress percent={parseInt(wordsCorrect / wordsTotal * 100)} />
+            <Progress percent={parseInt(wordsCorrect / wordsTotal * 100, 10)} />
           </Col>
         </Row>
         <br /><br />
@@ -73,8 +72,5 @@ class Step3 extends Component {
     )
   }
 }
-
-Step3.propTypes = {}
-Step3.defaultProps = {}
 
 export default Step3

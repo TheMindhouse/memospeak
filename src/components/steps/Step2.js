@@ -10,7 +10,7 @@ import {
 const TIME_DEFAULT = 60
 
 // Convert seconds to format mm:ss
-const formatTime = seconds => `${parseInt(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`
+const formatTime = seconds => `${parseInt(seconds / 60, 10)}:${String(seconds % 60).padStart(2, '0')}`
 
 class Step2 extends Component {
   constructor () {

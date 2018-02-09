@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import {
   WordAdded,
@@ -53,8 +52,5 @@ const Diff = ({ diff }) => {
     </div>
   )
 }
-
-Diff.propTypes = {}
-Diff.defaultProps = {}
 
 export default Diff
