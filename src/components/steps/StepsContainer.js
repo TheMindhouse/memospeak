@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Steps } from 'antd'
+import withSpeechRecognition from '../withSpeechRecognition';
 
 import {
   Step1,
   Step2,
   Step3
 } from './'
-
-const jsdiff = require('diff')
 
 const { Step } = Steps
 
@@ -29,9 +28,6 @@ class StepsContainer extends Component {
     super(props)
     this.state = {
       current: 0,
-      textOriginal: TEXT_DEFAULT,
-      textRecorded: '',
-      textDiff: null,
       wordStats: {
         wordsTotal: null,
         wordsCorrect: null,
@@ -42,9 +38,6 @@ class StepsContainer extends Component {
     this.prev = this.prev.bind(this)
     this.next = this.next.bind(this)
     this.reset = this.reset.bind(this)
-    this.saveOriginalText = this.saveOriginalText.bind(this)
-    this.saveRecordedText = this.saveRecordedText.bind(this)
-    this.compare = this.compare.bind(this)
   }
 
   next () {
@@ -61,27 +54,6 @@ class StepsContainer extends Component {
     this.setState({ current: 0 })
   }
 
-  saveOriginalText (textOriginal) {
-    this.setState({ textOriginal })
-  }
-
-  saveRecordedText (textRecorded) {
-    this.setState({ textRecorded }, () => this.compare())
-  }
-
-  compare () {
-    const {
-      textOriginal,
-      textRecorded
-    } = this.state
-
-    const textDiff = jsdiff.diffWordsWithSpace(textOriginal, textRecorded, {
-      ignoreCase: true
-    })
-
-    this.setState({ textDiff })
-  }
-
   render () {
     const { current } = this.state
     return (
@@ -95,24 +67,27 @@ class StepsContainer extends Component {
             this.state.current === 0 &&
             <Step1
               defaultText={TEXT_DEFAULT}
-              save={this.saveOriginalText}
-              next={this.next} />
+              save={this.props.saveOriginal}
+              next={this.next}
+            />
           }
           {
             this.state.current === 1 &&
             <Step2
-              save={this.saveRecordedText}
               next={this.next}
+              startRecording={this.props.startRecording}
+              stopRecording={this.props.stopRecording}
+              transcript={this.transcript}
             />
           }
           {
             this.state.current === 2 &&
             <Step3
-              textOriginal={this.state.textOriginal}
-              textRecorded={this.state.textRecorded}
-              textDiff={this.state.textDiff}
+              textOriginal={this.props.original}
+              textDiff={this.props.diff}
               wordStats={this.state.wordStats}
-              next={this.reset} />
+              next={this.reset}
+            />
           }
         </div>
       </div>
@@ -123,4 +98,4 @@ class StepsContainer extends Component {
 StepsContainer.propTypes = {}
 StepsContainer.defaultProps = {}
 
-export default StepsContainer
+export default withSpeechRecognition(StepsContainer);
