@@ -13,7 +13,7 @@ class App extends Component {
         <AppHeader />
         <Content className='content'>
           <Row gutter={16}>
-            <Col span={24} xs={{ span: 24 }} lg={{ offset: 5, span: 14 }}>
+            <Col span={24} xs={{ span: 24 }} md={{ offset: 2, span: 20 }} lg={{ offset: 5, span: 14 }}>
               <StepsContainer />
             </Col>
           </Row>
