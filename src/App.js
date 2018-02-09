@@ -4,7 +4,7 @@ import { StepsContainer } from './components/steps'
 import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 
-const jsdiff = require('diff');
+import diff from './helpers/diff';
 
 const { Content } = Layout
 
@@ -13,21 +13,16 @@ class App extends Component {
     super(props);
 
     this.state = {
-      original: '',
+      original: 'Jak sie masz',
       transcript: '',
       diff: '',
     }
   }
 
   compare = () => {
-    const diff = jsdiff.diffWordsWithSpace(
-      this.state.original,
-      this.state.transcript,
-      {
-        ignoreCase: true,
-      }
-    );
-    this.setState({ diff });
+    this.setState({
+      diff: diff(this.state.original, this.state.transcript),
+    });
   }
 
   saveTranscript = (transcript) => {
