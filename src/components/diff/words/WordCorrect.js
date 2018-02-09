@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const WordCorrect = (props) => {
+const WordCorrect = ({ value }) => {
   return (
-    <span>{props.value}</span>
+    <span>{value}</span>
   )
 }
 

@@ -20,6 +20,7 @@ const showDiff = (diff) => {
 
     const currentPart = diff[i]
     let el = null
+
     if (currentPart.added) {
       el = <WordAdded value={currentPart.value} />
     } else if (currentPart.removed) {
@@ -31,10 +32,11 @@ const showDiff = (diff) => {
             <WordPair missing={currentPart.value} added={nextPart.value} />
           )
           skipNextWord = true
+          result.push(el)
+          continue
         }
-      } else {
-        el = <WordMissing value={currentPart.value} />
       }
+      el = <WordMissing value={currentPart.value} />
     } else {
       el = <WordCorrect value={currentPart.value} />
     }
