@@ -39,7 +39,28 @@ body {
   max-width: inherit !important;
 }
 
+.diff-content {
+  font-size: 17px;
+  padding: 0 30px;
+}
+
+.diff-incorrect {
+  cursor: pointer;
+  transition: opacity .1s;
+}
+
+.diff-incorrect:hover {
+  text-decoration: underline;
+  opacity: 0.5;
+}
+
+.text-missing {
+  color: orange;
+  font-weight: bold;
+}
+
 .text-error {
   color: red;
   font-weight: bold;
+  text-decoration: line-through;
 }
