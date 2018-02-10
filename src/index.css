@@ -50,17 +50,15 @@ body {
 }
 
 .diff-incorrect:hover {
-  text-decoration: underline;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
-.text-missing {
-  color: orange;
-  font-weight: bold;
+.diff-word--missing {
+  background: #faad14;
+  color: #fff;
 }
 
-.text-error {
-  color: red;
-  font-weight: bold;
-  text-decoration: line-through;
+.diff-word--added {
+  background: #ff5555;
+  color: #fff;
 }

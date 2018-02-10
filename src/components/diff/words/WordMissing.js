@@ -18,7 +18,7 @@ const WordMissing = ({ value }) => {
   return (
     <Popover placement='top' title='Missing word' content={addWord(value)} trigger='click'>
       <span className='diff-incorrect'>
-        <span className='text-missing'>{value}</span>
+        <span className='diff-word--missing'>{value}</span>
       </span>
     </Popover>
   )

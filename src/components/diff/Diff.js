@@ -8,6 +8,29 @@ import {
 } from './words'
 
 const showDiff = (diff) => {
+  if (!diff) {
+    return
+  }
+  return diff.map(part => {
+    const {
+      text,
+      add,
+      remove
+    } = part
+
+    if (text) {
+      return <WordCorrect value={text} />
+    }
+    if (add && remove) {
+      return <WordPair missing={remove} added={add} />
+    }
+    if (add) {
+      return <WordAdded value={add} />
+    }
+    if (remove) {
+      return <WordMissing value={remove} />
+    }
+  })
   let skipNextWord = false
   const result = []
 

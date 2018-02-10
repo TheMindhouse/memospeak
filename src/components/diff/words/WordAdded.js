@@ -18,7 +18,7 @@ const WordAdded = ({ value }) => {
   return (
     <Popover placement='top' title='Extra word added' content={removeWord(value)} trigger='click'>
       <span className='diff-incorrect'>
-        <span className='text-error'>{value}</span>
+        <span className='diff-word--added'>{value}</span>
       </span>
     </Popover>
   )

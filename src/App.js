@@ -4,33 +4,40 @@ import { StepsContainer } from './components/steps'
 import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 
-import diff from './helpers/diff';
+import diff from './helpers/diff'
 
 const { Content } = Layout
 
+const TEMP_RECORDING = 'Biega pan Hilary Gdzie są moje zgubione gdzieś okulary? Szuka w spodniach i w surducie W lewym naprawde lewym bucie w prawym dłucie..'
+
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
-      original: 'Jak sie masz',
-      transcript: '',
+      original: 'Biega krzyczy pan Hilary Gdzie są moje okulary? Szuka w spodniach i w surducie W prawym bucie w lewym bucie..',
+      transcript: TEMP_RECORDING,
       diff: '',
     }
+  }
+
+  componentDidMount () {
+    this.compare()
   }
 
   compare = () => {
     this.setState({
       diff: diff(this.state.original, this.state.transcript),
-    });
+    })
   }
 
   saveTranscript = (transcript) => {
     this.setState({transcript}, this.compare);
+    // this.setState({ transcript: TEMP_RECORDING }, this.compare)
   }
 
   saveOriginal = (original) => {
-    this.setState({original});
+    this.setState({ original })
   }
 
   render () {

@@ -17,8 +17,8 @@ const WordPair = ({ missing, added }) => {
   return (
     <Popover placement='top' title='Incorrect word' content={markWordAsCorrect({missing, added})} trigger='click'>
       <span className='diff-incorrect'>
-        <span className='text-missing'>{missing}</span>&nbsp;
-        <span className='text-error'>{added}</span>
+        <span className='diff-word--missing'>{missing}</span>&nbsp;
+        <span className='diff-word--added'>{added}</span>
       </span>
     </Popover>
   )

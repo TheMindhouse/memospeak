@@ -1,15 +1,5 @@
-import {diffWordsWithSpace} from 'diff';
+import diffAlg from './diffAlgorithm'
 
-const diff = (oldString, newString) => {
-    const bareDiff = diffWordsWithSpace(
-        oldString,
-        newString,
-        {
-        ignoreCase: true,
-        }
-    );
+const diff = (oldString, newString) => diffAlg.diffString(oldString, newString)
 
-    return bareDiff
-}
-
-export default diff;
+export default diff
