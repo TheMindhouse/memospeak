@@ -25,7 +25,7 @@ class StepsContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      current: 2
+      current: 0
     }
 
     this.prev = this.prev.bind(this)
