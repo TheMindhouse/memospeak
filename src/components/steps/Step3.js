@@ -2,75 +2,36 @@ import React, { Component } from 'react'
 import {
   Row,
   Col,
-  Progress,
-  Button,
+  Button
 } from 'antd'
 
 import Diff from '../diff/Diff'
+import WordStats from '../diff/WordStats'
 
-class Step3 extends Component {
-  render () {
-    const { textOriginal, textDiff, modifyDiff, wordStats } = this.props
-    const {
-      wordsTotal,
-      wordsCorrect,
-      wordsIncorrect
-    } = wordStats
-    return (
-      <div>
-        <Row gutter={30}>
-          <Col span={12}>
-            <h2>Original</h2>
-            <p className='diff-content'>{textOriginal}</p>
-          </Col>
-          <Col span={12}>
-            <h2>Recorded</h2>
-            <div className='diff-content'>
-              <Diff diff={textDiff} modifyDiff={modifyDiff} />
-            </div>
-          </Col>
-        </Row>
+const Step3 = (props) => {
+  return (
+    <div>
+      <Row gutter={30}>
+        <Col span={12}>
+          <h2>Original</h2>
+          <p className='diff-content'>{props.textOriginal}</p>
+        </Col>
+        <Col span={12}>
+          <h2>Recorded</h2>
+          <div className='diff-content'>
+            <Diff diff={props.textDiff} modifyDiff={props.modifyDiff} />
+          </div>
+        </Col>
+      </Row>
 
-        <br /><br />
+      <br /><br />
 
-        <Row gutter={30}>
-          <Col span={24} xs={{ span: 24 }} md={{ offset: 2, span: 20 }} lg={{ offset: 6, span: 12 }}>
-            <Row gutter={30}>
-              <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                <h3>Total words</h3>
-                <Progress type='circle'
-                          status='active'
-                          percent={100}
-                          width={80}
-                          format={() => wordsTotal} />
-              </Col>
-              <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                <h3>Correct</h3>
-                <Progress type='circle'
-                          status='success'
-                          percent={wordsCorrect / wordsTotal * 100}
-                          width={80}
-                          format={() => wordsCorrect} />
-              </Col>
-              <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                <h3>Incorrect</h3>
-                <Progress type='circle'
-                          status='exception'
-                          percent={wordsIncorrect / wordsTotal * 100}
-                          width={80}
-                          format={() => wordsIncorrect} />
-              </Col>
-            </Row>
-            <br /><br />
-            <h3>Memorization level:</h3>
-            <Progress percent={parseInt(wordsCorrect / wordsTotal * 100, 10)} />
-          </Col>
-        </Row>
-        <br /><br />
-        <Button type='primary' size='large' onClick={() => this.props.next()}>Again</Button>
-      </div>
-    )
-  }
+      <WordStats diff={props.textDiff} />
+
+      <br /><br />
+      <Button type='primary' size='large' onClick={() => props.next()}>Again</Button>
+    </div>
+  )
 }
 
 export default Step3

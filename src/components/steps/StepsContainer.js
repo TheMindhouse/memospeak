@@ -25,12 +25,7 @@ class StepsContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      current: 2,
-      wordStats: {
-        wordsTotal: null,
-        wordsCorrect: null,
-        wordsIncorrect: null
-      }
+      current: 2
     }
 
     this.prev = this.prev.bind(this)
@@ -84,7 +79,6 @@ class StepsContainer extends Component {
               textOriginal={this.props.original}
               textDiff={this.props.diff}
               modifyDiff={this.props.modifyDiff}
-              wordStats={this.state.wordStats}
               next={this.reset}
             />
           }
