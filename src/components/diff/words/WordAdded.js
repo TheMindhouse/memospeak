@@ -5,18 +5,18 @@ import {
   Popover
 } from 'antd'
 
-const removeWord = (word) => (
+const removeWord = ({ id, value, markAsCorrect }) => (
   <div>
     You added unnecessary word<br />
-    <b>{word}</b>
+    <b>{value}</b>
     <br /><br />
-    <Button type='default' size='default'>Remove the word</Button>
+    <Button type='default' size='default' onClick={() => markAsCorrect(id)}>Remove the word</Button>
   </div>
 )
 
-const WordAdded = ({ value }) => {
+const WordAdded = ({ id, value, markAsCorrect }) => {
   return (
-    <Popover placement='top' title='Extra word added' content={removeWord(value)} trigger='click'>
+    <Popover placement='top' title='Extra word added' content={removeWord({ id, value, markAsCorrect })} trigger='click'>
       <span className='diff-incorrect'>
         <span className='diff-word--added'>{value}</span>
       </span>

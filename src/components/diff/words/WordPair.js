@@ -5,17 +5,19 @@ import {
   Popover
 } from 'antd'
 
-const markWordAsCorrect = ({ missing, added }) => (
+const markWordAsCorrect = ({ id, missing, added, markAsCorrect }) => (
   <div>
     Expected: <b>{missing}</b><br />
     You said: <b>{added}</b><br /><br />
-    <Button type='default' size='default'>Mark as correct</Button>
+    <Button type='default' size='default' onClick={() => markAsCorrect(id)}>Mark as correct</Button>
   </div>
 )
 
-const WordPair = ({ missing, added }) => {
+const WordPair = ({ id, missing, added, markAsCorrect }) => {
   return (
-    <Popover placement='top' title='Incorrect word' content={markWordAsCorrect({missing, added})} trigger='click'>
+    <Popover placement='top' title='Incorrect word'
+             content={markWordAsCorrect({ id, missing, added, markAsCorrect })}
+             trigger='click'>
       <span className='diff-incorrect'>
         <span className='diff-word--missing'>{missing}</span>&nbsp;
         <span className='diff-word--added'>{added}</span>

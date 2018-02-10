@@ -5,18 +5,18 @@ import {
   Popover
 } from 'antd'
 
-const addWord = (word) => (
+const addWord = ({ id, value, markAsCorrect }) => (
   <div>
     You didn't say the word<br />
-    <b>{word}</b>
+    <b>{value}</b>
     <br /><br />
-    <Button type='default' size='default'>Add the word</Button>
+    <Button type='default' size='default' onClick={() => markAsCorrect(id)}>Add the word</Button>
   </div>
 )
 
-const WordMissing = ({ value }) => {
+const WordMissing = ({ id, value, markAsCorrect }) => {
   return (
-    <Popover placement='top' title='Missing word' content={addWord(value)} trigger='click'>
+    <Popover placement='top' title='Missing word' content={addWord({ id, value, markAsCorrect })} trigger='click'>
       <span className='diff-incorrect'>
         <span className='diff-word--missing'>{value}</span>
       </span>

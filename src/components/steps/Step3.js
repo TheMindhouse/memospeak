@@ -10,7 +10,7 @@ import Diff from '../diff/Diff'
 
 class Step3 extends Component {
   render () {
-    const { textOriginal, textDiff, wordStats } = this.props
+    const { textOriginal, textDiff, modifyDiff, wordStats } = this.props
     const {
       wordsTotal,
       wordsCorrect,
@@ -26,7 +26,7 @@ class Step3 extends Component {
           <Col span={12}>
             <h2>Recorded</h2>
             <div className='diff-content'>
-              <Diff diff={textDiff} />
+              <Diff diff={textDiff} modifyDiff={modifyDiff} />
             </div>
           </Col>
         </Row>

@@ -25,7 +25,7 @@ class StepsContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      current: 0,
+      current: 2,
       wordStats: {
         wordsTotal: null,
         wordsCorrect: null,
@@ -83,6 +83,7 @@ class StepsContainer extends Component {
             <Step3
               textOriginal={this.props.original}
               textDiff={this.props.diff}
+              modifyDiff={this.props.modifyDiff}
               wordStats={this.state.wordStats}
               next={this.reset}
             />

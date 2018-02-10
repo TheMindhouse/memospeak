@@ -32,12 +32,21 @@ class App extends Component {
   }
 
   saveTranscript = (transcript) => {
-    this.setState({transcript}, this.compare);
-    // this.setState({ transcript: TEMP_RECORDING }, this.compare)
+    // this.setState({transcript}, this.compare);
+    this.setState({ transcript: TEMP_RECORDING }, this.compare)
   }
 
   saveOriginal = (original) => {
     this.setState({ original })
+  }
+
+  modifyDiff = ({ id, value }) => {
+    const diff = [
+      ...this.state.diff.slice(0, id),
+      value,
+      ...this.state.diff.slice(id + 1, this.state.diff.length)
+    ]
+    this.setState({ diff })
   }
 
   render () {
@@ -51,6 +60,7 @@ class App extends Component {
                 original={this.state.original}
                 transcript={this.state.transcript}
                 diff={this.state.diff}
+                modifyDiff={this.modifyDiff}
                 saveOriginal={this.saveOriginal}
                 onResult={this.saveTranscript}
               />
