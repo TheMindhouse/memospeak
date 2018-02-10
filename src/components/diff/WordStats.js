@@ -12,22 +12,34 @@ const calculate = (diff) => {
   return diff.reduce((previousValue, currentValue) => {
     const {
       text,
+      add,
       remove
     } = currentValue
 
+    // Words are correct
     if (text) {
       return {
         ...previousValue,
-        wordsTotal: previousValue.wordsTotal + text.split(' ').length,
-        wordsCorrect: previousValue.wordsCorrect + text.split(' ').length
+        wordsTotal: previousValue.wordsTotal + text.trim().split(' ').length,
+        wordsCorrect: previousValue.wordsCorrect + text.trim().split(' ').length
       }
     }
 
+    // Some words were removed or changed for other words. We count only missing words as incorrect
     if (remove) {
       return {
         ...previousValue,
-        wordsTotal: previousValue.wordsTotal + remove.split(' ').length,
-        wordsIncorrect: previousValue.wordsIncorrect + remove.split(' ').length
+        wordsTotal: previousValue.wordsTotal + remove.trim().split(' ').length,
+        wordsIncorrect: previousValue.wordsIncorrect + remove.trim().split(' ').length
+      }
+    }
+
+    // Some words were added extra (not changed but added). All of them are incorrect
+    if (add) {
+      return {
+        ...previousValue,
+        wordsTotal: previousValue.wordsTotal + add.trim().split(' ').length,
+        wordsIncorrect: previousValue.wordsIncorrect + add.trim().split(' ').length
       }
     }
 
