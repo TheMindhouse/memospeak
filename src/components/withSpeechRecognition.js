@@ -66,7 +66,7 @@ const withSpeechRecognition = (WrappedComponent) => {
                 const speechRecognition = new SpeechRecognition();
                 speechRecognition.continuous = true;
                 speechRecognition.interimResults = false;
-                speechRecognition.lang = 'pl-PL';
+                speechRecognition.lang = this.props.language;
                 speechRecognition.onstart = this.onStart;
                 speechRecognition.onend = this.onEnd;
                 speechRecognition.onerror = this.onError;

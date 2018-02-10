@@ -62,6 +62,7 @@ class StepsContainer extends Component {
               defaultText={this.props.original}
               save={this.props.saveOriginal}
               next={this.next}
+              changeLanguage={this.props.changeLanguage}
             />
           }
           {

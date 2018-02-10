@@ -18,6 +18,7 @@ class App extends Component {
       original: 'Biega krzyczy pan Hilary Gdzie są moje okulary? Szuka w spodniach i w surducie W prawym bucie w lewym bucie..',
       transcript: TEMP_RECORDING,
       diff: '',
+      language: 'en-US'
     }
   }
 
@@ -44,6 +45,10 @@ class App extends Component {
     this.setState({ diff })
   }
 
+  changeLanguage = (language) => {
+    this.setState({ language })
+  }
+
   render () {
     return (
       <Layout>
@@ -58,6 +63,8 @@ class App extends Component {
                 modifyDiff={this.modifyDiff}
                 saveOriginal={this.saveOriginal}
                 onResult={this.saveTranscript}
+                language={this.state.language}
+                changeLanguage={this.changeLanguage}
               />
             </Col>
           </Row>
