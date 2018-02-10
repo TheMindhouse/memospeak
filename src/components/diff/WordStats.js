@@ -38,7 +38,6 @@ const calculate = (diff) => {
     if (add) {
       return {
         ...previousValue,
-        wordsTotal: previousValue.wordsTotal + add.trim().split(' ').length,
         wordsIncorrect: previousValue.wordsIncorrect + add.trim().split(' ').length
       }
     }
