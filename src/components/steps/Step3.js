@@ -25,9 +25,9 @@ class Step3 extends Component {
           </Col>
           <Col span={12}>
             <h2>Recorded</h2>
-            <p className='diff-content'>
+            <div className='diff-content'>
               <Diff diff={textDiff} />
-            </p>
+            </div>
           </Col>
         </Row>
 
