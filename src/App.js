@@ -22,10 +22,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {
-    this.compare()
-  }
-
   compare = () => {
     this.setState({
       diff: diff(this.state.original, this.state.transcript),
@@ -33,8 +29,7 @@ class App extends Component {
   }
 
   saveTranscript = (transcript) => {
-    // this.setState({transcript}, this.compare);
-    this.setState({ transcript: TEMP_RECORDING }, this.compare)
+    this.setState({transcript}, this.compare);
   }
 
   saveOriginal = (original) => {
