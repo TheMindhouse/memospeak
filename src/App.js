@@ -8,17 +8,18 @@ import diff from './helpers/diff'
 
 const { Content } = Layout
 
-const TEMP_RECORDING = 'love me like you do la la love me like you do'
-
 class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      original: 'Love me like you do la la love me like you do',
-      transcript: TEMP_RECORDING,
+      original: 'Litwo, Ojczyzno moja! ty jesteś jak zdrowie;\n' +
+      'Ile cię trzeba cenić, ten tylko się dowie,\n' +
+      'Kto cię stracił. Dziś piękność twą w całej ozdobie\n' +
+      'Widzę i opisuję, bo tęsknię po tobie.',
+      transcript: '',
       diff: '',
-      language: 'en-US'
+      language: 'pl-PL'
     }
   }
 
@@ -61,11 +62,6 @@ class App extends Component {
         <Content className='content'>
           <Row gutter={16}>
             <Col span={24} xs={{ span: 24 }} md={{ offset: 2, span: 20 }} lg={{ offset: 5, span: 14 }}>
-              <pre>
-                {
-                  JSON.stringify(this.state.diff, null, 2)
-                }
-              </pre>
               <StepsContainer
                 original={this.state.original}
                 transcript={this.state.transcript}
