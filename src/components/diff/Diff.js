@@ -7,27 +7,17 @@ import {
   WordPair
 } from './words'
 
-const diffObject = (value = '') => {
-  return {
-    text: value
-  }
-}
+import { Word, TYPES } from '../../helpers/Words'
 
 const Diff = ({ diff, modifyDiff }) => {
-  const getCorrectDiffValue = (diffObj) => {
-    const {
-      add,
-      remove
-    } = diffObj
-
-    if (add && remove) {
-      return diffObject(remove)
-    }
-    if (add) {
-      return diffObject()
-    }
-    if (remove) {
-      return diffObject(remove)
+  const getCorrectDiffWord = (diffObj) => {
+    switch (diffObj.type) {
+      case TYPES.CHANGED:
+        return new Word(diffObj.removed, TYPES.CORRECT)
+      case TYPES.REMOVED:
+        return new Word(diffObj.value, TYPES.CORRECT)
+      case TYPES.ADDED:
+        return null
     }
   }
 
@@ -37,9 +27,9 @@ const Diff = ({ diff, modifyDiff }) => {
       return
     }
 
-    const value = getCorrectDiffValue(diffObj)
+    const correctWord = getCorrectDiffWord(diffObj)
 
-    modifyDiff({ id, value })
+    modifyDiff({ id, part: correctWord })
   }
 
   const showDiff = (diff = []) => {
@@ -47,23 +37,17 @@ const Diff = ({ diff, modifyDiff }) => {
       return
     }
     return diff.map((part, index) => {
-      const {
-        text,
-        add,
-        remove
-      } = part
-
-      if (text) {
-        return <WordCorrect value={text} key={index} />
-      }
-      if (add && remove) {
-        return <WordPair missing={remove} id={index} markAsCorrect={markAsCorrect} added={add} key={index} />
-      }
-      if (add) {
-        return <WordAdded value={add} id={index} markAsCorrect={markAsCorrect} key={index} />
-      }
-      if (remove) {
-        return <WordMissing value={remove} id={index} markAsCorrect={markAsCorrect} key={index} />
+      switch (part.type) {
+        case TYPES.CHANGED:
+          return <WordPair missing={part.removed} added={part.added} id={index} markAsCorrect={markAsCorrect} key={index} />
+        case TYPES.ADDED:
+          return <WordAdded value={part.value} id={index} markAsCorrect={markAsCorrect} key={index} />
+        case TYPES.REMOVED:
+          return <WordMissing value={part.value} id={index} markAsCorrect={markAsCorrect} key={index} />
+        case TYPES.CORRECT:
+        case TYPES.IGNORED:
+        default:
+          return <WordCorrect value={part.value} key={index} />
       }
     })
   }

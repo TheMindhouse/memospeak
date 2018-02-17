@@ -62,3 +62,7 @@ body {
   background: #ff5555;
   color: #fff;
 }
+
+.diff-word--ignored {
+  color: #ccc;
+}
