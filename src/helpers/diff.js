@@ -96,6 +96,10 @@ const markAsChanged = (diff) => {
     newDiff.push(current)
   }
 
+  if (tempChanged) {
+    newDiff.push(tempChanged)
+  }
+
   return newDiff
 }
 
