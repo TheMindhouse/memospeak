@@ -5,7 +5,7 @@ import {
   Cascader
 } from 'antd'
 
-import { langs } from '../../helpers/languages'
+import { langs, getLangObject } from '../../helpers/languages'
 
 const { TextArea } = Input
 
@@ -16,7 +16,7 @@ const options = langs.map(lang => {
     return {
       value: lang[0],
       label: lang[0],
-      children: lang.splice(1, lang.length - 1).map(version => {
+      children: lang.slice(1, lang.length).map(version => {
         return {
           value: version[0],
           label: version[1]
@@ -56,7 +56,7 @@ const Step1 = (props) => {
         onChange={onLanguageChange}
         expandTrigger='click'
         showSearch
-        defaultValue={['English', 'en-US']}
+        defaultValue={getLangObject(props.language)}
       />
 
       <br /> <br />

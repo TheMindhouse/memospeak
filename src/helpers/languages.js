@@ -61,3 +61,26 @@ export const langs =
       ['yue-Hant-HK', '粵語 (香港)']],
     ['日本語', ['ja-JP']],
     ['Lingua latīna', ['la']]]
+
+/**
+ * Returns an array with correct syntax for ant Cascader element
+ * @param lookupCode
+ * @return Array ['Code'], if a language has only one version
+ *         Array ['Language name', 'Code'] if a language has more versions
+ */
+export const getLangObject = (lookupCode) => {
+  let result = null
+  langs.forEach(lang => {
+    const matchingCode = lang.filter(code => {
+      return code[0] === lookupCode
+    })
+    if (matchingCode.length) {
+      if (lang.length > 2) {
+        result = [lang[0], matchingCode[0][0]]
+      } else {
+        result = [matchingCode[0][0]]
+      }
+    }
+  })
+  return result
+}
