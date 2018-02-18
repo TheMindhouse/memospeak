@@ -64,22 +64,33 @@ const withSpeechRecognition = (WrappedComponent) => {
             this.props.onError && this.props.onError(event);
         };
 
-        componentDidMount() {
-            const SpeechRecognition =
-                window.SpeechRecognition || window.webkitSpeechRecognition;
+        initSpeechRecognition = (language) => {
+          const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition;
 
-            if (SpeechRecognition !== undefined) {
-                const speechRecognition = new SpeechRecognition();
-                speechRecognition.continuous = true;
-                speechRecognition.interimResults = false;
-                speechRecognition.lang = this.props.language;
-                speechRecognition.onstart = this.onStart;
-                speechRecognition.onend = this.onEnd;
-                speechRecognition.onerror = this.onError;
-                speechRecognition.onresult = this.onResult;
+          if (SpeechRecognition !== undefined) {
+            const speechRecognition = new SpeechRecognition();
+            speechRecognition.continuous = true;
+            speechRecognition.interimResults = false;
+            speechRecognition.lang = language;
+            speechRecognition.onstart = this.onStart;
+            speechRecognition.onend = this.onEnd;
+            speechRecognition.onerror = this.onError;
+            speechRecognition.onresult = this.onResult;
 
-                this.setState({ speechRecognition });
+            this.setState({ speechRecognition });
+          }
+        }
+
+        componentWillUpdate({ language }) {
+            if (this.state.speechRecognition !== null && this.state.speechRecognition.lang !== language) {
+                this.initSpeechRecognition(language)
             }
+        }
+
+
+        componentDidMount() {
+            this.initSpeechRecognition(this.props.language)
         }
 
         render() {
