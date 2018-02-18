@@ -66,3 +66,14 @@ body {
 .diff-word--ignored {
   color: #ccc;
 }
+
+.textarea-original {
+  font-size: 17px;
+}
+
+
+/* Helpers */
+.margin-vertical-lg {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

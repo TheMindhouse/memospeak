@@ -1,5 +1,7 @@
 import React from 'react'
 import {
+  Row,
+  Col,
   Input,
   Button,
   Cascader
@@ -42,27 +44,28 @@ const Step1 = (props) => {
   }
 
   return (
-    <div>
-      <p>Paste the text you memorized:</p>
-      <TextArea rows={10} onBlur={saveText} defaultValue={props.defaultText} />
+    <Row gutter={30} type="flex" justify="space-around" align="middle">
+      <Col span={14} xs={{ span: 24 }} lg={{ span: 14 }}>
+        <p>Paste the text you memorized:</p>
+        <TextArea rows={20} onBlur={saveText} className='textarea-original' defaultValue={props.defaultText} />
+      </Col>
+      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }} className="margin-vertical-lg">
+        <Cascader
+          options={options}
+          size='large'
+          style={{ width: 250 }}
+          placeholder='Select language'
+          onChange={onLanguageChange}
+          expandTrigger='click'
+          showSearch
+          defaultValue={getLangObject(props.language)}
+        />
 
-      <br /> <br />
+        <br /> <br />
 
-      <Cascader
-        options={options}
-        size='large'
-        style={{ width: 250 }}
-        placeholder='Select language'
-        onChange={onLanguageChange}
-        expandTrigger='click'
-        showSearch
-        defaultValue={getLangObject(props.language)}
-      />
-
-      <br /> <br />
-
-      <Button type='primary' size='large' onClick={props.next}>Next</Button>
-    </div>
+        <Button type='primary' size='large' onClick={props.next}>Next</Button>
+      </Col>
+    </Row>
   )
 }
 
