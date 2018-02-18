@@ -29,7 +29,7 @@ class Step2 extends Component {
 
   startRecording () {
     // TODO: ask user before
-    this.props.startRecording();
+    this.props.startRecording()
     this.setState({ recording: true })
     this.timer = setInterval(() => {
       const secondsLeft = this.state.secondsLeft - 1
@@ -42,8 +42,8 @@ class Step2 extends Component {
   }
 
   stopRecording () {
-    clearInterval(this.timer);
-    this.props.stopRecording();
+    clearInterval(this.timer)
+    this.props.stopRecording()
     this.setState({ recording: false, finishedRecording: true })
 
     // TODO: use Promise/async?

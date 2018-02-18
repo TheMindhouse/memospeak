@@ -2,13 +2,17 @@ import React from 'react';
 import getComponentDisplayName from '../helpers/getComponentDisplayName';
 
 const withSpeechRecognition = (WrappedComponent) => {
-    class WithSpeachRecognition extends React.Component {
+    class WithSpeechRecognition extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
                 speechRecognition: null,
             };
         }
+
+        // Stores temporary transcript result until firing onEnd event.
+        // Useful when onResult doesn't return anything, because it hasn't detected anything.
+        tempTranscript = ''
 
         start = () => {
             if (this.state.speechRecognition !== null) {
@@ -45,12 +49,14 @@ const withSpeechRecognition = (WrappedComponent) => {
             ) {
                 result = event.results[0][0].transcript;
             }
+            this.tempTranscript = result
             this.props.onResult && this.props.onResult(result);
         };
 
         onEnd = (event) => {
             console.info("[EVENT] speechRecognition onend", event);
-            this.props.onEnd && this.props.onEnd(event);
+            this.props.onEnd && this.props.onEnd(this.tempTranscript);
+            this.tempTranscript = ''
         };
 
         onError = (event) => {
@@ -96,10 +102,10 @@ const withSpeechRecognition = (WrappedComponent) => {
         }
     }
 
-    WithSpeachRecognition.displayName =
+    WithSpeechRecognition.displayName =
         `withSpeechRecognition(${getComponentDisplayName(WrappedComponent)})`;
 
-    return WithSpeachRecognition;
+    return WithSpeechRecognition;
 };
 
 export default withSpeechRecognition;

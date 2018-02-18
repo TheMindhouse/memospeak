@@ -76,7 +76,7 @@ class App extends Component {
                 diff={this.state.diff}
                 modifyDiff={this.modifyDiff}
                 saveOriginal={this.saveOriginal}
-                onResult={this.saveTranscript}
+                onEnd={this.saveTranscript}
                 language={this.state.language}
                 changeLanguage={this.changeLanguage}
               />

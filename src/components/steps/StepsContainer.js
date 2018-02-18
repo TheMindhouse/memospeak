@@ -87,4 +87,4 @@ class StepsContainer extends Component {
 StepsContainer.propTypes = {}
 StepsContainer.defaultProps = {}
 
-export default withSpeechRecognition(StepsContainer);
+export default withSpeechRecognition(StepsContainer)
