@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/memospeak-logo.png'
+import logo from '../assets/images/memospeak-logo.svg'
 import { Row } from 'antd'
 
 const AppHeader = () => {
