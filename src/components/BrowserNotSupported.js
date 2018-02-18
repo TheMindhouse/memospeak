@@ -14,9 +14,8 @@ const BrowserNotSupported = () => {
       <Row className='browser-not-supported__content'>
         <h1>We're sorry :(</h1>
         <h2>
-          Memospeak is currently working only in Chrome for desktop.
+          Memospeak is currently working only in <a href="https://www.google.com/chrome/">Chrome for desktop</a>.
         </h2>
-        <h4>We're gonna make it work, but for now you can <a href="https://www.google.com/chrome/">download Chrome</a></h4>
       </Row>
     </Row>
   )
