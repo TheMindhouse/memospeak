@@ -4,10 +4,11 @@ import {
   Col,
   Input,
   Button,
-  Cascader
+  Cascader,
 } from 'antd'
 
 import { langs, getLangObject } from '../../helpers/languages'
+import SelectExample from './SelectExample'
 
 const { TextArea } = Input
 
@@ -43,13 +44,25 @@ const Step1 = (props) => {
     props.changeLanguage(languageCode)
   }
 
+  const onExampleSelect = ({ text, languageCode }) => {
+    props.save(text)
+    props.changeLanguage(languageCode)
+  }
+
   return (
-    <Row gutter={30} type="flex" justify="space-around" align="middle">
+    <Row gutter={30} type='flex' justify='space-around' align='middle'>
       <Col span={14} xs={{ span: 24 }} lg={{ span: 14 }}>
         <p>Paste the text you memorized:</p>
-        <TextArea rows={20} onBlur={saveText} className='textarea-original' defaultValue={props.defaultText} />
+        <TextArea rows={20} onBlur={saveText} className='textarea-original' value={props.defaultText} />
       </Col>
-      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }} className="margin-vertical-lg">
+
+      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }} className='margin-vertical-lg'>
+
+        <div style={{ marginBottom: '100px' }}>
+          <p>or choose from examples:</p>
+          <SelectExample onSelect={onExampleSelect} />
+        </div>
+
         <Cascader
           options={options}
           size='large'
@@ -58,7 +71,7 @@ const Step1 = (props) => {
           onChange={onLanguageChange}
           expandTrigger='click'
           showSearch
-          defaultValue={getLangObject(props.language)}
+          value={getLangObject(props.language)}
         />
 
         <br /> <br />
