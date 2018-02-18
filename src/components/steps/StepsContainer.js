@@ -21,6 +21,12 @@ const steps = [{
   description: 'See how well you performed!'
 }]
 
+const AVAILABLE_STEPS = {
+  STEP_1: 0,
+  STEP_2: 1,
+  STEP_3: 2
+}
+
 class StepsContainer extends Component {
   constructor (props) {
     super(props)
@@ -28,23 +34,11 @@ class StepsContainer extends Component {
       current: 0
     }
 
-    this.prev = this.prev.bind(this)
-    this.next = this.next.bind(this)
-    this.reset = this.reset.bind(this)
+    this.goToStep = this.goToStep.bind(this)
   }
 
-  next () {
-    const current = this.state.current + 1
-    this.setState({ current })
-  }
-
-  prev () {
-    const current = this.state.current - 1
-    this.setState({ current })
-  }
-
-  reset () {
-    this.setState({ current: 0 })
+  goToStep (step) {
+    this.setState({ current: step })
   }
 
   render () {
@@ -61,14 +55,14 @@ class StepsContainer extends Component {
             <Step1
               defaultText={this.props.original}
               save={this.props.saveOriginal}
-              next={this.next}
+              next={() => this.goToStep(AVAILABLE_STEPS.STEP_2)}
               changeLanguage={this.props.changeLanguage}
             />
           }
           {
             this.state.current === 1 &&
             <Step2
-              next={this.next}
+              next={() => this.goToStep(AVAILABLE_STEPS.STEP_3)}
               startRecording={this.props.startRecording}
               stopRecording={this.props.stopRecording}
               transcript={this.transcript}
@@ -80,7 +74,8 @@ class StepsContainer extends Component {
               textOriginal={this.props.original}
               textDiff={this.props.diff}
               modifyDiff={this.props.modifyDiff}
-              next={this.reset}
+              actionReset={() => this.goToStep(AVAILABLE_STEPS.STEP_1)}
+              actionRecord={() => this.goToStep(AVAILABLE_STEPS.STEP_2)}
             />
           }
         </div>

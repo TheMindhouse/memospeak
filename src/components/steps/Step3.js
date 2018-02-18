@@ -29,7 +29,9 @@ const Step3 = (props) => {
       <WordStats diff={props.textDiff} />
 
       <br /><br />
-      <Button type='primary' size='large' onClick={() => props.next()}>Again</Button>
+      <Button type='primary' size='large' onClick={props.actionRecord}>Record again</Button>
+      <br /><br />
+      <Button type='default' size='large' onClick={props.actionReset}>Change text</Button>
     </div>
   )
 }
