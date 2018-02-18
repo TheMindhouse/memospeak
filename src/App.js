@@ -5,33 +5,15 @@ import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 
 import diff from './helpers/diff'
+import { exampleTexts } from './helpers/exampleTexts'
 
 const { Content } = Layout
 
-const EXAMPLE_TEXT = `Yo
-His palms are sweaty, knees weak, arms are heavy 
-There's vomit on his sweater already, mom's spaghetti 
-He's nervous, but on the surface he looks calm and ready 
-To drop bombs, but he keeps on forgettin' 
-What he wrote down, the whole crowd goes so loud 
-He opens his mouth, but the words won't come out 
-He's chokin', how, everybody's jokin' now 
-The clocks run out, times up, over, blaow!
-Snap back to reality, oh there goes gravity 
-Oh, there goes Rabbit, he choked 
-He's so mad, but he won't give up that easy? No 
-He won't have it, he knows his whole back city's ropes 
-It don't matter, 
-He's dope, he knows that, but he's broke 
-He's so stacked that he knows 
-When he goes back to his mobile home, that's when it's 
-Back to the lab again yo, this whole rhapsody 
-He better go capture this moment and hope it don't pass him`
-
-const EXAMPLE_TEXT_LANG = 'en-US'
-
 const LOCAL_STORAGE_TEXT = 'cachedText'
 const LOCAL_STORAGE_LANG = 'cachedLanguage'
+
+const EXAMPLE_TEXT = exampleTexts[0].texts[0][1] || ''
+const EXAMPLE_TEXT_LANG = exampleTexts[0].languageCode
 
 class App extends Component {
   constructor (props) {

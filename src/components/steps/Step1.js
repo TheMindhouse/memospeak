@@ -4,7 +4,7 @@ import {
   Col,
   Input,
   Button,
-  Cascader,
+  Cascader
 } from 'antd'
 
 import { langs, getLangObject } from '../../helpers/languages'
@@ -50,13 +50,13 @@ const Step1 = (props) => {
   }
 
   return (
-    <Row gutter={30} type='flex' justify='space-around' align='middle'>
+    <Row gutter={30} type='flex' justify='space-around' align='stretch'>
       <Col span={14} xs={{ span: 24 }} lg={{ span: 14 }}>
         <p>Paste the text you memorized:</p>
         <TextArea rows={20} onBlur={saveText} className='textarea-original' value={props.defaultText} />
       </Col>
 
-      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }} className='margin-vertical-lg'>
+      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }}>
 
         <div style={{ marginBottom: '100px' }}>
           <p>or choose from examples:</p>
