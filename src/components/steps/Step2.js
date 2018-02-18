@@ -59,7 +59,9 @@ class Step2 extends Component {
           !this.state.recording && !this.state.finishedRecording &&
           <div>
             <p>Click Record button when ready. You will have 1 minute to finish.<br />Good luck!</p>
-            <Button type='primary' onClick={this.startRecording}>Record</Button>
+            <Button type='primary' size='large' onClick={this.startRecording}>Record</Button>
+            <br /><br />
+            <Button type='default' size='small' onClick={this.props.back}>Go back</Button>
           </div>
         }
         {

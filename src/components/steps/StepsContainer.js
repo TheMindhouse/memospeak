@@ -63,6 +63,7 @@ class StepsContainer extends Component {
           {
             this.state.current === 1 &&
             <Step2
+              back={() => this.goToStep(AVAILABLE_STEPS.STEP_1)}
               next={() => this.goToStep(AVAILABLE_STEPS.STEP_3)}
               startRecording={this.props.startRecording}
               stopRecording={this.props.stopRecording}
