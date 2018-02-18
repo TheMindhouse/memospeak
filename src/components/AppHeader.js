@@ -1,15 +1,13 @@
 import React from 'react'
 import logo from '../assets/images/memospeak-logo.svg'
 import { Row } from 'antd'
+import AppHeaderName from './AppHeaderName'
 
 const AppHeader = () => {
   return (
     <Row type='flex' align='middle' justify='center' className="header">
       <img src={logo} alt='Memospeak' className='header-logo' />
-      <div>
-        <span className='header-name'>Memospeak</span>
-        <span className='header-subtitle'>Train your memory by memorizing texts</span>
-      </div>
+      <AppHeaderName />
     </Row>
   )
 }
