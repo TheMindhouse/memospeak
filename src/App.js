@@ -41,9 +41,7 @@ class App extends Component {
     this.setState({ original })
 
     // Cache entered text
-    if (original !== EXAMPLE_TEXT) {
-      localStorage.setItem(LOCAL_STORAGE_TEXT, original)
-    }
+    localStorage.setItem(LOCAL_STORAGE_TEXT, original)
   }
 
   modifyDiff = ({ id, part = null }) => {
@@ -64,9 +62,7 @@ class App extends Component {
     this.setState({ language })
 
     // Cache chosen language
-    if (language !== EXAMPLE_TEXT_LANG) {
-      localStorage.setItem(LOCAL_STORAGE_LANG, language)
-    }
+    localStorage.setItem(LOCAL_STORAGE_LANG, language)
   }
 
   render () {

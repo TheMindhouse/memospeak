@@ -53,7 +53,7 @@ const Step1 = (props) => {
     <Row gutter={30} type='flex' justify='space-around' align='stretch'>
       <Col span={14} xs={{ span: 24 }} lg={{ span: 14 }}>
         <p>Paste the text you memorized:</p>
-        <TextArea rows={20} onBlur={saveText} className='textarea-original' value={props.defaultText} />
+        <TextArea rows={10} onChange={saveText} className='textarea-original' value={props.defaultText} />
       </Col>
 
       <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }}>
