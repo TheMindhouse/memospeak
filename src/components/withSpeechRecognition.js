@@ -15,7 +15,7 @@ const withSpeechRecognition = (WrappedComponent) => {
         tempTranscript = ''
 
         // Transcript saved from previous SpeechRecognition objects, when the session was not yet ended by user
-        previousTranscript = ''
+        fullTranscript = ''
 
         // Is speech recognition ended by user or by itself being idle
         isStoppedByUser = false
@@ -48,31 +48,40 @@ const withSpeechRecognition = (WrappedComponent) => {
         onResult = (event) => {
             // See: https://w3c.github.io/speech-api/webspeechapi.html#speechreco-result
             console.info("[EVENT] speechRecognition onresult", event);
-            let transcript = this.previousTranscript;
+            let currentTranscript = '';
 
             const resultsList = event.results
 
             for (let i = 0; i < resultsList.length; i++) {
               const result = resultsList[i]
               if (result.isFinal) {
-                transcript = transcript + result[0].transcript
+                currentTranscript = currentTranscript
+                  ? `${currentTranscript} ${result[0].transcript.trim()}`
+                  : result[0].transcript.trim()
               }
             }
 
-            this.tempTranscript = transcript
-            this.props.onResult && this.props.onResult(transcript);
+            console.log('currentTranscript', currentTranscript)
+
+            this.tempTranscript = currentTranscript
+            // this.props.onResult && this.props.onResult(currentTranscript);
         };
 
         onEnd = (event) => {
             console.info("[EVENT] speechRecognition onend", event);
+
+              // Save current transcript and restart speech recognition
+              this.fullTranscript = this.fullTranscript
+                ? `${this.fullTranscript} ${this.tempTranscript.trim()}`
+                : this.tempTranscript.trim()
+              console.log('fullTranscript', this.fullTranscript)
+              this.tempTranscript = ''
+
             if (this.isStoppedByUser) {
                 // Finish speech recognition
-                this.props.onEnd && this.props.onEnd(this.tempTranscript);
-                this.tempTranscript = ''
-                this.previousTranscript = ''
+                this.props.onEnd && this.props.onEnd(this.fullTranscript);
+                this.fullTranscript = ''
             } else {
-                // Save current transcript and restart speech recognition
-                this.previousTranscript = `${this.previousTranscript} ${this.tempTranscript} `
                 this.start()
             }
         };
