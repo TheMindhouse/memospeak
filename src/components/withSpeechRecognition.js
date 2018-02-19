@@ -40,17 +40,19 @@ const withSpeechRecognition = (WrappedComponent) => {
         onResult = (event) => {
             // See: https://w3c.github.io/speech-api/webspeechapi.html#speechreco-result
             console.info("[EVENT] speechRecognition onresult", event);
-            let result = undefined;
-            if (
-                event.results &&
-                event.results.length !== 0 &&
-                event.results[0].length !== 0 &&
-                event.results[0][0].transcript !== ''
-            ) {
-                result = event.results[0][0].transcript;
+            let transcript = '';
+
+            const resultsList = event.results
+
+            for (let i = 0; i < resultsList.length; i++) {
+              const result = resultsList[i]
+              if (result.isFinal) {
+                transcript = transcript + result[0].transcript
+              }
             }
-            this.tempTranscript = result
-            this.props.onResult && this.props.onResult(result);
+
+            this.tempTranscript = transcript
+            this.props.onResult && this.props.onResult(transcript);
         };
 
         onEnd = (event) => {
