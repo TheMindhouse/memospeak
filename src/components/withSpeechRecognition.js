@@ -14,14 +14,22 @@ const withSpeechRecognition = (WrappedComponent) => {
         // Useful when onResult doesn't return anything, because it hasn't detected anything.
         tempTranscript = ''
 
+        // Transcript saved from previous SpeechRecognition objects, when the session was not yet ended by user
+        previousTranscript = ''
+
+        // Is speech recognition ended by user or by itself being idle
+        isStoppedByUser = false
+
         start = () => {
             if (this.state.speechRecognition !== null) {
+                this.isStoppedByUser = false
                 this.state.speechRecognition.start();
             }
         };
 
         stop = () => {
             if (this.state.speechRecognition !== null) {
+                this.isStoppedByUser = true
                 this.state.speechRecognition.stop();
             }
         };
@@ -40,7 +48,7 @@ const withSpeechRecognition = (WrappedComponent) => {
         onResult = (event) => {
             // See: https://w3c.github.io/speech-api/webspeechapi.html#speechreco-result
             console.info("[EVENT] speechRecognition onresult", event);
-            let transcript = '';
+            let transcript = this.previousTranscript;
 
             const resultsList = event.results
 
@@ -57,8 +65,16 @@ const withSpeechRecognition = (WrappedComponent) => {
 
         onEnd = (event) => {
             console.info("[EVENT] speechRecognition onend", event);
-            this.props.onEnd && this.props.onEnd(this.tempTranscript);
-            this.tempTranscript = ''
+            if (this.isStoppedByUser) {
+                // Finish speech recognition
+                this.props.onEnd && this.props.onEnd(this.tempTranscript);
+                this.tempTranscript = ''
+                this.previousTranscript = ''
+            } else {
+                // Save current transcript and restart speech recognition
+                this.previousTranscript = `${this.previousTranscript} ${this.tempTranscript} `
+                this.start()
+            }
         };
 
         onError = (event) => {
