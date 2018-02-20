@@ -53,7 +53,7 @@ const Step1 = (props) => {
     <Row gutter={30} type='flex' justify='space-around' align='stretch'>
       <Col span={14} xs={{ span: 24 }} lg={{ span: 14 }}>
         <p>Paste the text you memorized:</p>
-        <TextArea rows={20} onChange={saveText} className='textarea-original' value={props.defaultText} />
+        <TextArea rows={20} onChange={saveText} className='textarea-original' value={props.original} />
       </Col>
 
       <Col span={10} xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 12 }} lg={{ span: 10 }}>
@@ -76,7 +76,7 @@ const Step1 = (props) => {
 
         <br /> <br />
 
-        <Button type='primary' size='large' onClick={props.next}>Next</Button>
+        <Button type='primary' size='large' onClick={props.next} disabled={props.original.length === 0}>Next</Button>
       </Col>
     </Row>
   )
