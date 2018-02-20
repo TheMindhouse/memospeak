@@ -5,25 +5,23 @@ import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 
 import diff from './helpers/diff'
-import { exampleTexts } from './helpers/exampleTexts'
 
 const { Content } = Layout
 
 const LOCAL_STORAGE_TEXT = 'cachedText'
 const LOCAL_STORAGE_LANG = 'cachedLanguage'
 
-const EXAMPLE_TEXT = exampleTexts[0].texts[0][1] || ''
-const EXAMPLE_TEXT_LANG = exampleTexts[0].languageCode
-
 class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      original: localStorage.getItem(LOCAL_STORAGE_TEXT) || EXAMPLE_TEXT,
+      original: localStorage.getItem(LOCAL_STORAGE_TEXT),
       transcript: '',
+      tempTranscript: '',
       diff: '',
-      language: localStorage.getItem(LOCAL_STORAGE_LANG) || EXAMPLE_TEXT_LANG
+      tempDiff: '',
+      language: localStorage.getItem(LOCAL_STORAGE_LANG)
     }
   }
 

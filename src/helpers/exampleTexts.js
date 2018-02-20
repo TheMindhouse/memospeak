@@ -14,7 +14,16 @@ Never gonna tell a lie and hurt you`],
         `You better lose yourself in the music, the moment 
 You own it, you better never let it go 
 You only get one shot, do not miss your chance to blow 
-This opportunity comes once in a lifetime, yo`]
+This opportunity comes once in a lifetime, yo`],
+      ['Happy',
+      `Because I'm happy
+Clap along if you feel like a room without a roof
+Because I'm happy
+Clap along if you feel like happiness is the truth
+Because I'm happy
+Clap along if you know what happiness is to you
+Because I'm happy
+Clap along if you feel like that's what you wanna do`]
     ]
   },
   {
@@ -58,18 +67,6 @@ Las mujeres no me faltan, ni el dinero, ni el amor
 Jineteando en mi caballo
 Por la sierra yo me voy
 Las estrellas y la luna, ellas me dicen dónde voy
-
-Ay, ay, ay, ay
-Ay, ay mi amor
-Ay mi morena de mi corazón
-
-Me gusta tocar la guitarra
-Me gusta cantar el sol
-Mariachi me acompaña cuando canto mi canción
-
-Me gusta tomar mis copas
-Aguardiente es lo mejor
-También el tequila blanco con su sal le da sabor
 
 Ay, ay, ay, ay
 Ay, ay mi amor
