@@ -92,3 +92,19 @@ body {
     margin-top: 24px;
     margin-bottom: 24px;
 }
+
+.choose-example {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 992px) {
+    .choose-example {
+        margin-top: 0;
+        margin-bottom: 100px;
+    }
+}
+
+.ant-popover {
+    max-width: 200px;
+}

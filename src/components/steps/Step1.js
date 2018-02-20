@@ -56,9 +56,9 @@ const Step1 = (props) => {
         <TextArea rows={20} onChange={saveText} className='textarea-original' value={props.defaultText} />
       </Col>
 
-      <Col span={10} xs={{ span: 24 }} lg={{ span: 10 }}>
+      <Col span={10} xs={{ span: 24 }} sm={{ span: 14 }} md={{ span: 12 }} lg={{ span: 10 }}>
 
-        <div style={{ marginBottom: '100px' }}>
+        <div className='choose-example'>
           <p>or choose from examples:</p>
           <SelectExample onSelect={onExampleSelect} />
         </div>
@@ -66,7 +66,7 @@ const Step1 = (props) => {
         <Cascader
           options={options}
           size='large'
-          style={{ width: 250 }}
+          style={{ width: '100%' }}
           placeholder='Select language'
           onChange={onLanguageChange}
           expandTrigger='click'
