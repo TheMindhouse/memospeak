@@ -57,6 +57,8 @@ body {
 .diff-content {
     font-size: 17px;
     padding: 0 30px;
+    word-break: break-word;
+    white-space: pre-line;
 }
 
 .diff-incorrect {
