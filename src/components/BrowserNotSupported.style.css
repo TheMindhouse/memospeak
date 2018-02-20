@@ -1,6 +1,6 @@
 .browser-not-supported {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
 }
 
@@ -11,4 +11,5 @@
 
 .browser-not-supported__content {
     margin-top: 24px;
+    padding: 24px 30px;
 }
