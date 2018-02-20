@@ -31,7 +31,7 @@ const SelectExample = (props) => {
   }
 
   return (
-    <Select size='large' style={{ width: '100%' }} onChange={handleSelect}>
+    <Select size='large' style={{ width: '100%' }} onChange={handleSelect} placeholder="Select example">
       {getLanguageGroups(exampleTexts)}
     </Select>
   )
