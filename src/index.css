@@ -69,16 +69,17 @@ body {
 }
 
 .diff-word--missing {
-    background: #faad14;
-    color: #fff;
+    border-bottom: 2px solid #faad14;
+    color: #faad14;
 }
 
 .diff-word--added {
-    background: #ff5555;
-    color: #fff;
+    font-weight: bold;
+    text-decoration: line-through;
 }
 
 .diff-word--ignored {
+    font-size: 14px;
     color: #ccc;
 }
 

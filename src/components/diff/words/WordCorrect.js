@@ -1,8 +1,11 @@
 import React from 'react'
 
 const WordCorrect = ({ value }) => {
+  if (!value) {
+    return null
+  }
   return (
-    <span>{value}</span>
+    <span>{value}&nbsp;</span>
   )
 }
 

@@ -20,6 +20,7 @@ const WordMissing = ({ id, value, markAsCorrect }) => {
       <span className='diff-incorrect'>
         <span className='diff-word--missing'>{value}</span>
       </span>
+      &nbsp;
     </Popover>
   )
 }

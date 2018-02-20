@@ -7,8 +7,8 @@ import {
 
 const markWordAsCorrect = ({ id, missing, added, markAsCorrect }) => (
   <div>
-    Expected: <b>{missing}</b><br />
-    You said: <b>{added}</b><br /><br />
+    You said: <b>{added}</b><br />
+    Expected: <b>{missing}</b><br /><br />
     <Button type='default' size='default' onClick={() => markAsCorrect(id)}>Mark as correct</Button>
   </div>
 )
@@ -19,9 +19,11 @@ const WordPair = ({ id, missing, added, markAsCorrect }) => {
              content={markWordAsCorrect({ id, missing, added, markAsCorrect })}
              trigger='click'>
       <span className='diff-incorrect'>
-        <span className='diff-word--missing'>{missing}</span>&nbsp;
         <span className='diff-word--added'>{added}</span>
+        <span className='diff-word--ignored'>&#8594;</span>
+        <span className='diff-word--missing'>{missing}</span>
       </span>
+      &nbsp;
     </Popover>
   )
 }

@@ -39,15 +39,15 @@ const Diff = ({ diff, modifyDiff }) => {
     return diff.map((part, index) => {
       switch (part.type) {
         case TYPES.CHANGED:
-          return <WordPair missing={part.removed} added={part.added} id={index} markAsCorrect={markAsCorrect} key={index} />
+          return <WordPair missing={part.removed.trim()} added={part.added.trim()} id={index} markAsCorrect={markAsCorrect} key={index} />
         case TYPES.ADDED:
-          return <WordAdded value={part.value} id={index} markAsCorrect={markAsCorrect} key={index} />
+          return <WordAdded value={part.value.trim()} id={index} markAsCorrect={markAsCorrect} key={index} />
         case TYPES.REMOVED:
-          return <WordMissing value={part.value} id={index} markAsCorrect={markAsCorrect} key={index} />
+          return <WordMissing value={part.value.trim()} id={index} markAsCorrect={markAsCorrect} key={index} />
         case TYPES.CORRECT:
         case TYPES.IGNORED:
         default:
-          return <WordCorrect value={part.value} key={index} />
+          return <WordCorrect value={part.value.trim()} key={index} />
       }
     })
   }
