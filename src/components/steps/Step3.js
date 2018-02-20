@@ -12,11 +12,11 @@ const Step3 = (props) => {
   return (
     <div>
       <Row gutter={30}>
-        <Col span={12}>
+        <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <h2>Original</h2>
           <p className='diff-content'>{props.textOriginal}</p>
         </Col>
-        <Col span={12}>
+        <Col xs={{ span: 24 }} md={{ span: 12 }}>
           <h2>Recorded</h2>
           <div className='diff-content'>
             <Diff diff={props.textDiff} modifyDiff={props.modifyDiff} />
