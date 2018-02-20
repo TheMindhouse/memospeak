@@ -67,6 +67,7 @@ class StepsContainer extends Component {
               next={() => this.goToStep(AVAILABLE_STEPS.STEP_3)}
               startRecording={this.props.startRecording}
               stopRecording={this.props.stopRecording}
+              afterStopDelay={this.props.afterStopDelay}
               transcript={this.transcript}
             />
           }

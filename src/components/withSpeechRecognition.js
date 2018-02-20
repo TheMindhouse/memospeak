@@ -20,6 +20,9 @@ const withSpeechRecognition = (WrappedComponent) => {
         // Is speech recognition ended by user or by itself being idle
         isStoppedByUser = false
 
+        // After recording is stopped wait for this number of ms for final onResult event
+        afterStopDelay = 2000
+
         start = () => {
             if (this.state.speechRecognition !== null) {
                 this.isStoppedByUser = false
@@ -30,7 +33,12 @@ const withSpeechRecognition = (WrappedComponent) => {
         stop = () => {
             if (this.state.speechRecognition !== null) {
                 this.isStoppedByUser = true
-                this.state.speechRecognition.stop();
+              
+                console.log('[EVENT] Stopped by user');
+
+                setTimeout(() => {
+                  this.state.speechRecognition.stop();
+                }, this.afterStopDelay)
             }
         };
 
@@ -129,6 +137,7 @@ const withSpeechRecognition = (WrappedComponent) => {
                 startRecording: this.start,
                 stopRecording: this.stop,
                 abortRecording: this.abort,
+                afterStopDelay: this.afterStopDelay
             };
             const props = Object.assign(
                 {},

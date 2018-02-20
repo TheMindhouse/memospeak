@@ -49,7 +49,7 @@ class Step2 extends Component {
     // TODO: use Promise/async?
     setTimeout(() => {
       this.props.next()
-    }, 1000)
+    }, this.props.afterStopDelay + 500)
   }
 
   render () {
