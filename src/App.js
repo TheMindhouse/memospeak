@@ -11,17 +11,17 @@ const { Content } = Layout
 const LOCAL_STORAGE_TEXT = 'cachedText'
 const LOCAL_STORAGE_LANG = 'cachedLanguage'
 
+const DEFAULT_LANG = 'en-US'
+
 class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      original: localStorage.getItem(LOCAL_STORAGE_TEXT),
+      original: localStorage.getItem(LOCAL_STORAGE_TEXT) || '',
       transcript: '',
-      tempTranscript: '',
       diff: '',
-      tempDiff: '',
-      language: localStorage.getItem(LOCAL_STORAGE_LANG)
+      language: localStorage.getItem(LOCAL_STORAGE_LANG) || DEFAULT_LANG
     }
   }
 
