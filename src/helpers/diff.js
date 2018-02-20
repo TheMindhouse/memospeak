@@ -2,23 +2,17 @@ import { diffWordsWithSpace } from 'diff'
 
 import { Word, WordChanged, TYPES } from './Words'
 
-const containsAnyAlphanumericChars = (str) => {
-  return str.match(/[A-Za-z0-9]/i)
-}
+import {
+  containsAnyAlphanumericChars,
+  removeLineBreaks
+} from './string'
 
-const ignoreNonAlphabeticChars = (diff) => {
-  return diff.map(part => {
-    const { value } = part
-    if (containsAnyAlphanumericChars(value)) {
-      return part
-    }
-    return {
-      ...part,
-      ignored: true
-    }
-  })
-}
-
+/**
+ * Converts diff original objects to Word objects, so we can display them properly later
+ *
+ * @param diff - original diff array from 'diff' package
+ * @return {Array} - modified diff array with custom Word objects
+ */
 const convertToWordObj = diff =>
   diff.map((part) => {
     const {
@@ -64,7 +58,7 @@ const convertToWordObj = diff =>
  * @param diff
  * @return {Array} - transformed diff with WordChanged objects
  */
-const markAsChanged = (diff) => {
+const combineWhenChanged = (diff) => {
   const newDiff = []
 
   let tempChanged = null
@@ -103,17 +97,33 @@ const markAsChanged = (diff) => {
   return newDiff
 }
 
+/**
+ * Handle post-processing of a diff. This is needed because 'diff' package doesn't return
+ * the diff exactly as we want to. We need to combine results into Word objects
+ * and combine removed/added word pairs into one object.
+ *
+ * @param diff - original diff array from 'diff' package
+ * @return {Array} - diff modified for use in the App
+ */
 const postProcess = (diff) => {
   const wordObjects = convertToWordObj(diff)
 
-  const cleaned = markAsChanged(wordObjects)
+  const cleaned = combineWhenChanged(wordObjects)
 
   return cleaned
 }
 
+/**
+ * Main function to get a diff between two strings.
+ * Uses 'diff' package and later does some post-processing to prepare results for the app.
+ *
+ * @param oldString - original text
+ * @param newString - record transcript
+ * @return {Array} - array with Word or WordChanged objects
+ */
 const diff = (oldString, newString) => {
   const bareDiff = diffWordsWithSpace(
-    oldString,
+    removeLineBreaks(oldString),
     newString,
     {
       ignoreCase: true
