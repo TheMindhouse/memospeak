@@ -12,10 +12,10 @@ const { Step } = Steps
 
 const steps = [{
   title: 'Memorize',
-  description: 'Enter any text you want'
+  description: 'Enter any text you know'
 }, {
   title: 'Speak',
-  description: 'Record what you remembered'
+  description: 'Record what you memorized'
 }, {
   title: 'Compare',
   description: 'See how well you performed!'
