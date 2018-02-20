@@ -21,6 +21,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Memospeak - Train your memory by memorizing texts</title>
+
+    <script type="text/javascript">
+      !function(name,path,ctx){
+        var latest,prev=name!=='Keen'&&window.Keen?window.Keen:false;ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;latest=w.Keen;if(prev){w.Keen=prev}else{try{delete w.Keen}catch(e){w.Keen=void 0}}ctx[name]=latest;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}
+      }('KeenAsync','https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.1.3.min.js',this);
+
+      KeenAsync.ready(function(){
+        // Configure a client instance
+        var client = new KeenAsync({
+          projectId: '5a8c4b5646e0fb00016bc464',
+          writeKey: '3DACBE945B60C79024B6CDD69ABC9615F28ACFD2C3798BB61ABAD245D3F98EB46EF942880A2D6E39488C3DB75E8E09BC8A281080F0CA139A0163ED132EF87FBEAD020F4519D9681777FDCEC223CF485A776E3C9AE93B83337F02D72FB92FB8C8'
+        });
+
+        // Record an event
+        client.recordEvent('pageviews', {
+          title: document.title
+        });
+      });
+    </script>
   </head>
   <body>
     <noscript>
