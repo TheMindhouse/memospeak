@@ -31,7 +31,7 @@ class StepsContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      current: 0
+      current: AVAILABLE_STEPS.STEP_1
     }
 
     this.goToStep = this.goToStep.bind(this)
