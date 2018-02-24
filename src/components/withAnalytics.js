@@ -8,7 +8,7 @@ const pageview = (path) => {
     console.log(`[ANALYTICS] [Pageview] ${path}`)
     return true
   }
-  
+
   return ReactGA.pageview(path)
 }
 

@@ -17,6 +17,7 @@ const Diff = ({ diff, modifyDiff }) => {
       case TYPES.REMOVED:
         return new Word(diffObj.value, TYPES.CORRECT)
       case TYPES.ADDED:
+      default:
         return null
     }
   }

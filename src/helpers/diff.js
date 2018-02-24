@@ -36,6 +36,8 @@ const convertToWordObj = diff =>
     if (removed) {
       return new Word(value, TYPES.REMOVED)
     }
+
+    return null
   })
 
 /**
