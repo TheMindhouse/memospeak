@@ -6,13 +6,17 @@ import { env } from '../helpers/env'
 const pageview = (path) => {
   if (env.isDev()) {
     console.log(`[ANALYTICS] [Pageview] ${path}`)
+    return true
   }
+  
   return ReactGA.pageview(path)
 }
+
 
 const set = (fieldsObject) => {
   return ReactGA.set(fieldsObject)
 }
+
 
 const event = ({
                  category = 'Navigation',
@@ -21,9 +25,12 @@ const event = ({
                  value = undefined,
                  nonInteraction = true,
                } = {}) => {
+
   if (env.isDev()) {
     console.log(`[ANALYTICS] [Event] ${category} -> ${action}`)
+    return true
   }
+
   return ReactGA.event({
     category,
     action,
