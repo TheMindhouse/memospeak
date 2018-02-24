@@ -3,8 +3,10 @@ import memospeakLogoNotWorking from '../assets/images/memospeak-logo-not-support
 import { Row } from 'antd'
 import AppHeaderName from './AppHeaderName'
 import './BrowserNotSupported.style.css'
+import withAnalytics from './withAnalytics'
 
-const BrowserNotSupported = () => {
+const BrowserNotSupported = (props) => {
+  props.analyticsAPI.pageview('BrowserNotSupported')
   return (
     <Row type='flex' align='middle' justify='center' className='browser-not-supported'>
       <Row type='flex' align='middle' justify='center'>
@@ -24,4 +26,4 @@ const BrowserNotSupported = () => {
 BrowserNotSupported.propTypes = {}
 BrowserNotSupported.defaultProps = {}
 
-export default BrowserNotSupported
+export default withAnalytics(BrowserNotSupported)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Steps } from 'antd'
-import withSpeechRecognition from '../withSpeechRecognition';
+import withSpeechRecognition from '../withSpeechRecognition'
+import withAnalytics from '../withAnalytics'
 
 import {
   Step1,
@@ -38,7 +39,11 @@ class StepsContainer extends Component {
   }
 
   goToStep (step) {
-    this.setState({ current: step })
+    this.setState({ current: step }, () => {
+      this.props.analyticsAPI.event({
+        action: `Go to Step ${step}`
+      })
+    })
   }
 
   render () {
@@ -90,4 +95,4 @@ class StepsContainer extends Component {
 StepsContainer.propTypes = {}
 StepsContainer.defaultProps = {}
 
-export default withSpeechRecognition(StepsContainer)
+export default withAnalytics(withSpeechRecognition(StepsContainer))

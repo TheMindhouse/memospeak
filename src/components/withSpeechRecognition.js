@@ -1,5 +1,6 @@
 import React from 'react';
 import getComponentDisplayName from '../helpers/getComponentDisplayName';
+import { env } from '../helpers/env'
 
 const withSpeechRecognition = (WrappedComponent) => {
     class WithSpeechRecognition extends React.Component {
@@ -33,8 +34,10 @@ const withSpeechRecognition = (WrappedComponent) => {
         stop = () => {
             if (this.state.speechRecognition !== null) {
                 this.isStoppedByUser = true
-              
+
+              if (env.isDev()) {
                 console.log('[EVENT] Stopped by user');
+              }
 
                 setTimeout(() => {
                   this.state.speechRecognition.stop();
@@ -49,13 +52,17 @@ const withSpeechRecognition = (WrappedComponent) => {
         };
 
         onStart = (event) => {
+          if (env.isDev()) {
             console.info("[EVENT] speechRecognition onstart", event);
+          }
             this.props.onStart && this.props.onStart(event);
         };
 
         onResult = (event) => {
             // See: https://w3c.github.io/speech-api/webspeechapi.html#speechreco-result
+          if (env.isDev()) {
             console.info("[EVENT] speechRecognition onresult", event);
+          }
             let currentTranscript = '';
 
             const resultsList = event.results
@@ -69,21 +76,29 @@ const withSpeechRecognition = (WrappedComponent) => {
               }
             }
 
+          if (env.isDev()) {
             console.log('currentTranscript', currentTranscript)
+          }
 
             this.tempTranscript = currentTranscript
             // this.props.onResult && this.props.onResult(currentTranscript);
         };
 
         onEnd = (event) => {
-            console.info("[EVENT] speechRecognition onend", event);
+            if (env.isDev()) {
+              console.info("[EVENT] speechRecognition onend", event);
+            }
 
-              // Save current transcript and restart speech recognition
-              this.fullTranscript = this.fullTranscript
-                ? `${this.fullTranscript} ${this.tempTranscript.trim()}`
-                : this.tempTranscript.trim()
+            // Save current transcript and restart speech recognition
+            this.fullTranscript = this.fullTranscript
+              ? `${this.fullTranscript} ${this.tempTranscript.trim()}`
+              : this.tempTranscript.trim()
+
+            if (env.isDev()) {
               console.log('fullTranscript', this.fullTranscript)
-              this.tempTranscript = ''
+            }
+
+            this.tempTranscript = ''
 
             if (this.isStoppedByUser) {
                 // Finish speech recognition
@@ -95,7 +110,9 @@ const withSpeechRecognition = (WrappedComponent) => {
         };
 
         onError = (event) => {
+          if (env.isDev()) {
             console.info("[EVENT] speechRecognition onerror", event);
+          }
             this.props.onError && this.props.onError(event);
         };
 

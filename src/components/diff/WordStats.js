@@ -6,6 +6,7 @@ import {
 } from 'antd'
 
 import { TYPES } from '../../helpers/Words'
+import withAnalytics from '../withAnalytics'
 
 const calculate = (diff) => {
   if (!diff) {
@@ -47,12 +48,18 @@ const calculate = (diff) => {
   })
 }
 
-const WordStats = ({ diff }) => {
+const WordStats = (props) => {
   const {
     wordsTotal,
     wordsCorrect,
     wordsIncorrect
-  } = calculate(diff)
+  } = calculate(props.diff)
+
+  props.analyticsAPI.event({
+    category: 'Recording',
+    action: 'Memorization percentage',
+    value: parseInt(wordsCorrect / wordsTotal * 100, 10)
+  })
 
   return (
     <Row gutter={30}>
@@ -94,4 +101,4 @@ const WordStats = ({ diff }) => {
 WordStats.propTypes = {}
 WordStats.defaultProps = {}
 
-export default WordStats
+export default withAnalytics(WordStats)
