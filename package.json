@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.2.0",
-    "diff": "^3.4.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-ga": "^2.4.1",
+    "antd": "^3.5.2",
+    "diff": "^3.5.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-ga": "^2.5.0",
     "react-scripts": "1.1.0",
-    "xregexp": "^4.0.0"
+    "xregexp": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,12 +18,12 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^5.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.6.1",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-standard": "^3.1.0"
   }
 }
