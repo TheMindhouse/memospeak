@@ -11,7 +11,7 @@ if (window.location.protocol !== 'https:') {
 }
 
 // Connect Analytics
-ReactGA.initialize('UA-114455758-1')
+ReactGA.initialize('UA-117937544-3')
 
 ReactDOM.render(<AppWrapper />, document.getElementById('root'))
 registerServiceWorker()
